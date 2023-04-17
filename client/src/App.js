@@ -1,25 +1,27 @@
-import { useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
+import { accessToken, logout } from "./spotify";
 
 function App() {
-  useEffect(() => {
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const accessToken = urlParams.get("access_token");
-    const refreshToken = urlParams.get("refresh_token");
+  const [token, setToken] = useState();
 
-    if (refreshToken) {
-      fetch(`/refresh_token?refresh_token=${refreshToken}`)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((err) => console.error(err));
-    }
+  useEffect(() => {
+    setToken(accessToken);
   }, []);
 
   return (
     <div className="App">
-      <a href="http://localhost:8888/login">Login to Spotify</a>
+      <header className="App-header">
+        {!token ? (
+          <a className="App-header" href="http://localhost:8888/login">
+            Login to Spotify
+          </a>
+        ) : (
+          <>
+            <h1>Logged in!</h1>
+            <button onClick={logout}>Logout</button>
+          </>
+        )}
+      </header>
     </div>
   );
 }

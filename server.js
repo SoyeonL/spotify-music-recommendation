@@ -74,6 +74,8 @@ app.get("/callback", (req, res) => {
         });
 
         res.redirect(`http://localhost:3000?${queryParams}`);
+      } else {
+        res.redirect(`/?${querystring.stringify({ error: "invalid token" })}`);
       }
     })
     .catch((error) => res.send(error));
