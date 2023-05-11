@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { accessToken, logout } from "./spotify";
+import Search from "./Search";
 
 function App() {
   const [token, setToken] = useState();
@@ -16,10 +17,7 @@ function App() {
             Login to Spotify
           </a>
         ) : (
-          <>
-            <h1>Logged in!</h1>
-            <button onClick={logout}>Logout</button>
-          </>
+          <Search token={token} />
         )}
       </header>
     </div>
