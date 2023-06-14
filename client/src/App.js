@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
-import { accessToken, logout } from "./spotify";
+import { accessToken } from "./spotify";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "./Search";
+import TrackDetail from "./pages/TrackDetail";
 
 function App() {
   const [token, setToken] = useState();
@@ -17,7 +19,12 @@ function App() {
             Login to Spotify
           </a>
         ) : (
-          <Search token={token} />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/track-detail/:id" element={<TrackDetail />} />
+              <Route path="/" element={<Search token={token} />} />
+            </Routes>
+          </BrowserRouter>
         )}
       </header>
     </div>

@@ -126,3 +126,27 @@ const getAccessToken = () => {
 };
 
 export const accessToken = getAccessToken();
+
+/**
+ * Axios global request headers
+ * https://github.com/axios/axios#global-axios-defaults
+ */
+axios.defaults.baseURL = "https://api.spotify.com/v1";
+axios.defaults.headers["Authorization"] = `Bearer ${accessToken}`;
+axios.defaults.headers["Content-Type"] = "application/json";
+
+export const searchItems = (q, type) => {
+  return axios.get(`/search?q=${q}&type=${type}`);
+};
+
+export const getRecommendationsByArtist = (seed_artist) => {
+  return axios.get(`/recommendations?seed_artists=${seed_artist}`);
+};
+
+export const getRecommendationsByTrack = (seed_track) => {
+  return axios.get(`/recommendations?seed_tracks=${seed_track}`);
+};
+
+export const getTrackById = (id) => {
+  return axios.get(`/tracks/${id}`);
+};

@@ -19,7 +19,8 @@
     "@mui/material": "^5.12.3",
     "axios": "^1.3.5",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "react-router-dom": "^6.11.1"
   },
   "devDependencies": {
     "concurrently": "^8.0.1",
