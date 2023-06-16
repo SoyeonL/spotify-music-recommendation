@@ -27,6 +27,10 @@ const SearchBar = ({ setTracks }) => {
           getRecommendationsByArtist(response.data.artists.items[0].id)
             .then((response) => {
               setTracks(response.data.tracks);
+              window.sessionStorage.setItem(
+                "tracks",
+                JSON.stringify(response.data.tracks)
+              );
               console.log(response.data);
             })
             .catch((err) => console.error(err));
@@ -34,6 +38,10 @@ const SearchBar = ({ setTracks }) => {
           getRecommendationsByTrack(response.data.tracks.items[0].id)
             .then((response) => {
               setTracks(response.data.tracks);
+              window.sessionStorage.setItem(
+                "tracks",
+                JSON.stringify(response.data.tracks)
+              );
               console.log(response.data);
             })
             .catch((err) => console.error(err));
