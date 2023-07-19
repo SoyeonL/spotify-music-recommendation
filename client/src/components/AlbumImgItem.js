@@ -1,12 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { NestedMenuItem } from "mui-nested-menu";
+import Snackbar from "@mui/material/Snackbar";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
+import { addTrackToPlaylist } from "../spotify";
+import { Alert } from "@mui/material";
 
-const AlbumImgItem = ({ track }) => {
+const AlbumImgItem = ({ track, playlists }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [open, setOpen] = useState(false);
+
+  const menuOpen = Boolean(anchorEl);
+
+  const handleMainMenuClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleMainMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSubMenuClick = () => {
+    setOpen(true);
+  };
+
+  const handleSubMenuClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpen(false);
+  };
+
+  const addToPlaylistHandler = (id) => {
+    // addTrackToPlaylist(id, track.uri)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((err) => console.error(err));
+    // console.log(track.uri);
+    handleMainMenuClose();
+    setOpen(true);
+  };
+
+  const action = (
+    // <Fragment>
+    // <Button color="secondary" size="small" onClick={handleSubMenuClose}>
+    // UNDO
+    // </Button>
+    <IconButton
+      size="small"
+      aria-label="close"
+      color="inherit"
+      onClick={handleSubMenuClose}
+    >
+      <CloseIcon fontSize="small" />
+    </IconButton>
+    // </Fragment>
+  );
 
   return (
     <>
-      <Link to={`/track-detail/${track.id}`} className="img__link">
+      {/* <Link
+        to={`/track-detail/${track.id}`}
+        className="img__link"
+        onClick={handleClick}
+      > */}
+      <Button onClick={handleMainMenuClick}>
         <img
           className="img__cover"
           width={150}
@@ -19,7 +82,48 @@ const AlbumImgItem = ({ track }) => {
         {isPlaying && (
           <audio autoPlay={true} loop src={track.preview_url}></audio>
         )}
-      </Link>
+        {/* </Link> */}
+      </Button>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={menuOpen}
+        onClose={handleMainMenuClose}
+        anchorOrigin={{
+          vertical: "center",
+          horizontal: "center",
+        }}
+        transformOrigin={{
+          vertical: "center",
+          horizontal: "center",
+        }}
+      >
+        <NestedMenuItem parentMenuOpen={menuOpen} label="Add to Playlist">
+          {playlists.map((playlist) => (
+            <MenuItem
+              key={playlist.id}
+              onClick={() => addToPlaylistHandler(playlist.id)}
+            >
+              {playlist.name}
+            </MenuItem>
+          ))}
+        </NestedMenuItem>
+        <MenuItem
+          key={track.id}
+          component={Link}
+          to={`/track-detail/${track.id}`}
+        >
+          Go to detail page
+        </MenuItem>
+      </Menu>
+      <Snackbar
+        open={open}
+        autoHideDuration={3000}
+        onClose={handleSubMenuClose}
+        message="Added to your playlist!"
+        action={action}
+      ></Snackbar>
     </>
   );
 };

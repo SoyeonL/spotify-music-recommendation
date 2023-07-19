@@ -27,7 +27,7 @@ const generateRandomString = (length) => {
 const stateKey = "spotify_auth_state";
 
 app.get("/login", (req, res) => {
-  const scope = "user-read-private user-read-email";
+  const scope = "user-read-private user-read-email playlist-modify-public";
   const state = generateRandomString(16);
   res.cookie(stateKey, state);
 

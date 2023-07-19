@@ -150,3 +150,25 @@ export const getRecommendationsByTrack = (seed_track) => {
 export const getTrackById = (id) => {
   return axios.get(`/tracks/${id}`);
 };
+
+export const getCurrentUserPlaylists = () => {
+  return axios.get(`/me/playlists`);
+};
+
+export const addTrackToPlaylist = (playlist_id, uri) => {
+  return axios.post(`/playlists/${playlist_id}/tracks`, {
+    uris: [`${uri}`],
+  });
+};
+
+export const getAlbum = (id) => {
+  return axios.get(`/albums/${id}`);
+};
+
+export const getAlbumTracks = (id) => {
+  return axios.get(`/albums/${id}/tracks`);
+};
+
+export const getArtist = (id) => {
+  return axios.get(`/artists/${id}`);
+};

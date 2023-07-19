@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import AlbumImgItem from "./AlbumImgItem";
+import { getCurrentUserPlaylists } from "../spotify";
 
 const SearchResult = () => {
+  const [playlists, setPlaylists] = useState([]);
+
+  useEffect(() => {
+    getCurrentUserPlaylists()
+      .then((response) => {
+        setPlaylists(response.data.items);
+        // console.log(response.data.items[0]);
+      })
+      .catch((err) => console.error(err));
+  }, []);
+
   let tracks = JSON.parse(window.sessionStorage.getItem("tracks"));
 
   return (
@@ -16,8 +28,11 @@ const SearchResult = () => {
           gap={15}
         >
           {tracks.map((track) => (
-            <ImageListItem key={track.id}>
-              <AlbumImgItem track={track} />
+            <ImageListItem
+              key={track.id}
+              sx={{ display: "flex", alignItems: "center" }}
+            >
+              <AlbumImgItem track={track} playlists={playlists} />
             </ImageListItem>
           ))}
         </ImageList>
