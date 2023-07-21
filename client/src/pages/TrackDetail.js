@@ -2,18 +2,24 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTrackById } from "../spotify";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import IconButton from "@mui/material/IconButton";
 
 const TrackDetail = () => {
   const [trackData, setTrackData] = useState();
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const navigate = useNavigate();
   const { id } = useParams();
 
   const goBack = () => {
     navigate(-1);
+  };
+
+  const playSongHandler = () => {
+    setIsPlaying(true);
   };
 
   useEffect(() => {
@@ -43,30 +49,45 @@ const TrackDetail = () => {
               <Box>
                 <img src={trackData.album.images[1].url} alt="" />
               </Box>
-              <Typography
-                component="div"
+              <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  // alignSelf: "flex-end",
+                  // justifyContent: "center",
+                  alignSelf: "flex-start",
+                  mt: "60px",
+                  gap: "15px",
                   // mb: "60px",
                 }}
               >
-                <Box>
-                  <Box sx={{ fontSize: 70, fontWeight: "bold" }}>
-                    {trackData.name}
-                  </Box>
-                  <Box>
-                    <Link to={`/album-detail/${trackData.album.id}`}>
-                      {trackData.album.name}
-                    </Link>{" "}
-                    &bull; {trackData.album.release_date} &bull;{" "}
-                    <Link to={`/artist-detail/${trackData.artists[0].id}`}>
-                      {trackData.artists[0].name}
-                    </Link>
-                  </Box>
+                <Box sx={{ fontSize: 70, fontWeight: "bold" }}>
+                  {trackData.name}
                 </Box>
-              </Typography>
+                <Box>
+                  <Link to={`/album-detail/${trackData.album.id}`}>
+                    {trackData.album.name}
+                  </Link>{" "}
+                  &bull; {trackData.album.release_date} &bull;{" "}
+                  <Link to={`/artist-detail/${trackData.artists[0].id}`}>
+                    {trackData.artists[0].name}
+                  </Link>
+                </Box>
+                <Box sx={{ margin: "auto" }}>
+                  {trackData.preview_url ? (
+                    <IconButton onClick={playSongHandler}>
+                      <PlayCircleIcon sx={{ fontSize: "150px" }} />
+                      {isPlaying && (
+                        <audio
+                          autoPlay={true}
+                          src={trackData.preview_url}
+                        ></audio>
+                      )}
+                    </IconButton>
+                  ) : (
+                    <h1>Preview not available</h1>
+                  )}
+                </Box>
+              </Box>
             </>
           )}
         </Box>

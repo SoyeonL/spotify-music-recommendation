@@ -172,3 +172,7 @@ export const getAlbumTracks = (id) => {
 export const getArtist = (id) => {
   return axios.get(`/artists/${id}`);
 };
+
+export const getCurrentUserProfile = () => {
+  return axios.get("/me");
+};
