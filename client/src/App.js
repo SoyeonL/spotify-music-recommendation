@@ -5,6 +5,7 @@ import Search from "./Search";
 import TrackDetail from "./pages/TrackDetail";
 import AlbumDetail from "./pages/AlbumDetail";
 import ArtistDetail from "./pages/ArtistDetail";
+import Playlists from "./pages/Playlists";
 
 function App() {
   const [token, setToken] = useState();
@@ -26,6 +27,7 @@ function App() {
               <Route path="/track-detail/:id" element={<TrackDetail />} />
               <Route path="/album-detail/:id" element={<AlbumDetail />} />
               <Route path="/artist-detail/:id" element={<ArtistDetail />} />
+              <Route path="/playlists" element={<Playlists />} />
               <Route path="/" element={<Search token={token} />} />
             </Routes>
           </BrowserRouter>

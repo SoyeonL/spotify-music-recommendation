@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import { useParams, useNavigate } from "react-router-dom";
 import { getTrackById } from "../spotify";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import StopCircleIcon from "@mui/icons-material/StopCircle";
 import IconButton from "@mui/material/IconButton";
 
 const TrackDetail = () => {
@@ -20,6 +21,10 @@ const TrackDetail = () => {
 
   const playSongHandler = () => {
     setIsPlaying(true);
+  };
+
+  const stopSongHandler = () => {
+    setIsPlaying(false);
   };
 
   useEffect(() => {
@@ -74,15 +79,21 @@ const TrackDetail = () => {
                 </Box>
                 <Box sx={{ margin: "auto" }}>
                   {trackData.preview_url ? (
-                    <IconButton onClick={playSongHandler}>
-                      <PlayCircleIcon sx={{ fontSize: "150px" }} />
-                      {isPlaying && (
-                        <audio
-                          autoPlay={true}
-                          src={trackData.preview_url}
-                        ></audio>
-                      )}
-                    </IconButton>
+                    <>
+                      <IconButton onClick={playSongHandler}>
+                        <PlayCircleIcon sx={{ fontSize: "150px" }} />
+                        {isPlaying && (
+                          <audio
+                            onEnded={stopSongHandler}
+                            autoPlay={true}
+                            src={trackData.preview_url}
+                          ></audio>
+                        )}
+                      </IconButton>
+                      <IconButton onClick={stopSongHandler}>
+                        <StopCircleIcon sx={{ fontSize: "150px" }} />
+                      </IconButton>
+                    </>
                   ) : (
                     <h1>Preview not available</h1>
                   )}
