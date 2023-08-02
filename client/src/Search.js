@@ -55,6 +55,7 @@ const Search = () => {
       <Box>
         <Button onClick={() => toggleDrawer(true)}>
           <img
+            alt="profile"
             width={50}
             height={50}
             src={profileImg}
