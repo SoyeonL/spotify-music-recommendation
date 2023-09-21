@@ -4,17 +4,17 @@ import ImageListItem from "@mui/material/ImageListItem";
 import AlbumImgItem from "./AlbumImgItem";
 import { getCurrentUserPlaylists } from "../spotify";
 
-const SearchResult = () => {
-  const [playlists, setPlaylists] = useState([]);
+const SearchResult = ({ playlists }) => {
+  // const [playlists, setPlaylists] = useState([]);
 
-  useEffect(() => {
-    getCurrentUserPlaylists()
-      .then((response) => {
-        setPlaylists(response.data.items);
-        // console.log(response.data.items[0]);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //   getCurrentUserPlaylists()
+  //     .then((response) => {
+  //       setPlaylists(response.data.items);
+  //       // console.log(response.data.items[0]);
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   let tracks = JSON.parse(window.sessionStorage.getItem("tracks"));
 

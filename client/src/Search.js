@@ -12,7 +12,7 @@ import SearchResult from "./components/SearchResult";
 import { Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
-const Search = () => {
+const Search = ({ playlists }) => {
   const [tracks, setTracks] = useState([]);
   const [profileImg, setProfileImg] = useState("");
   const [open, setOpen] = useState(false);
@@ -76,7 +76,7 @@ const Search = () => {
       </Box>
       <Container maxWidth="md">
         <SearchBar setTracks={setTracks} />
-        <SearchResult tracks={tracks} />
+        <SearchResult tracks={tracks} playlists={playlists} />
       </Container>
     </div>
   );
