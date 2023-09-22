@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { accessToken, getCurrentUserPlaylists } from "./spotify";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Search from "./Search";
+import Login from "./pages/Login";
 import TrackDetail from "./pages/TrackDetail";
 import AlbumDetail from "./pages/AlbumDetail";
 import ArtistDetail from "./pages/ArtistDetail";
@@ -27,9 +28,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         {!token ? (
-          <a className="App-header" href="http://localhost:8888/login">
-            Login to Spotify
-          </a>
+          <Login />
         ) : (
           <BrowserRouter>
             <Routes>

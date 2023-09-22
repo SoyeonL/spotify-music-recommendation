@@ -102,7 +102,6 @@ const TrackDetail = () => {
             </>
           )}
         </Box>
-        <button onClick={goBack}>Back to search result</button>
       </Container>
     </div>
   );
