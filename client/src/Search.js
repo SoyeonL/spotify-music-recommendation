@@ -9,7 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import { logout, getCurrentUserProfile } from "./spotify";
 import SearchBar from "./components/SearchBar";
 import SearchResult from "./components/SearchResult";
-import { Container } from "@mui/material";
+import Container from "@mui/material/Container";
 import { Link } from "react-router-dom";
 
 const Search = ({ playlists }) => {

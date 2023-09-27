@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getTrackById } from "../spotify";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import StopCircleIcon from "@mui/icons-material/StopCircle";
@@ -12,12 +12,7 @@ const TrackDetail = () => {
   const [trackData, setTrackData] = useState();
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const navigate = useNavigate();
   const { id } = useParams();
-
-  const goBack = () => {
-    navigate(-1);
-  };
 
   const playSongHandler = () => {
     setIsPlaying(true);
@@ -31,7 +26,6 @@ const TrackDetail = () => {
     getTrackById(id)
       .then((response) => {
         setTrackData(response.data);
-        // console.log(response.data);
       })
       .catch((err) => console.error(err));
   }, [id]);
