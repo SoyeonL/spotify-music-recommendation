@@ -19,7 +19,6 @@ function App() {
     getCurrentUserPlaylists()
       .then((response) => {
         setPlaylists(response.data.items);
-        // console.log(response.data.items[0]);
       })
       .catch((err) => console.error(err));
   }, []);
