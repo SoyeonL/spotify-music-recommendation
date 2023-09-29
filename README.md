@@ -29,3 +29,15 @@ Follow these instructions to get the Spotify Music Recommendation App up and run
    ```bash
    git clone https://github.com/yourusername/spotify-music-recommendation-app.git
    ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd spotify-music-app
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
