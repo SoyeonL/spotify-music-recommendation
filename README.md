@@ -44,7 +44,7 @@ Follow these instructions to get the Spotify Music Recommendation App up and run
 
 ### Configuration
 
-To enable Spotify login and access the Spotify Web API, you'll need to set up a [Spotify Developer App](https://developer.spotify.com/dashboard/.)
+To enable Spotify login and access the Spotify Web API, you need to set up a [Spotify Developer App](https://developer.spotify.com/dashboard/.)
 
 You will have to define a '.env' file and set the following variables:
 
@@ -53,4 +53,12 @@ You will have to define a '.env' file and set the following variables:
  CLIENT_ID="YOUR_CLIENT_ID"
  CLIENT_SECRET="YOUR_CLIENT_SECRET"
  REDIRECT_URI=http://localhost:8888/callback
+```
+
+### Usage
+
+1. Start the development server:
+
+```bash
+   npm start
 ```
