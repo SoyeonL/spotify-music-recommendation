@@ -14,7 +14,7 @@ The Spotify Music Recommendation App is a web application that allows users to d
 
 - **Track Details**: Clicking on an album cover image provides detailed information about the track, including artist name, album name, and release date.
 
-## Getting Started
+## How to run locally
 
 Follow these instructions to get the Spotify Music Recommendation App up and running on your local machine.
 
@@ -41,3 +41,11 @@ Follow these instructions to get the Spotify Music Recommendation App up and run
    ```bash
    npm install
    ```
+
+### Configuration
+
+To enable Spotify login and access the Spotify Web API, you'll need to set up a Spotify Developer App and configure the following environment variables:
+
+- REACT_APP_SPOTIFY_CLIENT_ID: Your Spotify Developer App client ID.
+- REACT_APP_SPOTIFY_REDIRECT_URI: The URI to which Spotify should redirect after login (e.g., http://localhost:3000/callback in development).
+  Ensure you also add these environment variables to your deployment environment.
