@@ -74,3 +74,7 @@ You will have to define a '.env' file and set the following variables:
 - Spotify Web API: The app retrieves music data from the Spotify Web API, requiring user authentication.
 
 - Material-UI (MUI): MUI is used for designing the user interface, providing a sleek and responsive design.
+
+---
+
+Enjoy discovering and listening to your favorite music with the Spotify Music Recommendation App! 🎶
