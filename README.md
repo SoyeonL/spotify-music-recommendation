@@ -33,7 +33,7 @@ Follow these instructions to get the Spotify Music Recommendation App up and run
 2. Navigate to the project directory:
 
    ```bash
-   cd spotify-music-app
+   cd spotify-music-recommendation-app
    ```
 
 3. Install the dependencies:

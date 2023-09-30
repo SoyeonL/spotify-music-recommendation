@@ -65,14 +65,6 @@ const Search = ({ playlists }) => {
         <Drawer open={open} onClose={() => toggleDrawer(false)}>
           {list()}
         </Drawer>
-        {/* <Button
-          sx={{ top: 10, left: 15 }}
-          onClick={logout}
-          variant="contained"
-          color="success"
-        >
-          Logout
-        </Button> */}
       </Box>
       <Container maxWidth="md">
         <SearchBar setTracks={setTracks} />
