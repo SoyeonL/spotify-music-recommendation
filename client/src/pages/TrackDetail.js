@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -36,30 +38,28 @@ const TrackDetail = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: ["column", "row"],
+            justifyContent: ["", "center"],
             alignItems: "center",
             gap: "50px",
-            // bgcolor: "#cfe8fc",
             height: "50vh",
           }}
         >
           {trackData && (
             <>
-              <Box>
+              <Box sx={{ mt: ["15px", 0] }}>
                 <img src={trackData.album.images[1].url} alt="" />
               </Box>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  // justifyContent: "center",
-                  alignSelf: "flex-start",
-                  mt: "60px",
+                  alignSelf: ["", "flex-start"],
+                  mt: ["0", "60px"],
                   gap: "15px",
-                  // mb: "60px",
                 }}
               >
-                <Box sx={{ fontSize: 70, fontWeight: "bold" }}>
+                <Box sx={{ fontSize: [50, 70], fontWeight: "bold" }}>
                   {trackData.name}
                 </Box>
                 <Box>

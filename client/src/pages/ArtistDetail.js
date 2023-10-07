@@ -26,7 +26,6 @@ const ArtistDetail = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: "50px",
-            // bgcolor: "#cfe8fc",
             height: "50vh",
           }}
         >
