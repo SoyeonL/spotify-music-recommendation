@@ -23,16 +23,24 @@ const ArtistDetail = () => {
         <Box
           sx={{
             display: "flex",
-            justifyContent: "center",
+            flexDirection: ["column", "row"],
+            justifyContent: ["", "center"],
             alignItems: "center",
-            gap: "50px",
+            gap: ["10px", "50px"],
             height: "50vh",
           }}
         >
           {artist && (
             <>
-              <img style={{ borderRadius: "50%" }} src={artist.images[1].url} />
-              <Box sx={{ fontSize: 70, fontWeight: "bold" }}>{artist.name}</Box>
+              <Box sx={{ mt: ["15px", 0] }}>
+                <img
+                  style={{ borderRadius: "50%" }}
+                  src={artist.images[1].url}
+                />
+              </Box>
+              <Box sx={{ fontSize: [30, 70], fontWeight: "bold" }}>
+                {artist.name}
+              </Box>
             </>
           )}
         </Box>

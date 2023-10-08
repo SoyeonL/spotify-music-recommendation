@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getCurrentUserPlaylists } from "../spotify";
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import ImageList from "@mui/material/ImageList";
@@ -14,14 +17,19 @@ const Playlists = ({ playlists }) => {
   //     .catch((err) => console.error(err));
   // }, []);
 
+  const theme = useTheme();
+  const mobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <div>
       <Container maxWidth="lg" sx={{ mt: 5 }}>
-        <h1>Playlists</h1>
+        <Box sx={{ textAlign: ["center", "left"] }}>
+          <h1>Playlists</h1>
+        </Box>
         <ImageList
-          sx={{ height: 1000, pt: 5, mb: 5 }}
+          sx={{ height: [700, 1000], pt: 5, mb: 5 }}
           rowHeight={165}
-          cols={4}
+          cols={mobile ? 1 : 4}
           gap={15}
         >
           {playlists.map((playlist) => (

@@ -41,7 +41,7 @@ const TrackDetail = () => {
             flexDirection: ["column", "row"],
             justifyContent: ["", "center"],
             alignItems: "center",
-            gap: "50px",
+            gap: ["10px", "50px"],
             height: "50vh",
           }}
         >
@@ -57,9 +57,11 @@ const TrackDetail = () => {
                   alignSelf: ["", "flex-start"],
                   mt: ["0", "60px"],
                   gap: "15px",
+                  // pl: ["5%", 0],
+                  textAlign: ["center", ""],
                 }}
               >
-                <Box sx={{ fontSize: [50, 70], fontWeight: "bold" }}>
+                <Box sx={{ fontSize: [30, 70], fontWeight: "bold" }}>
                   {trackData.name}
                 </Box>
                 <Box>

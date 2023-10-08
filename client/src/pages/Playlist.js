@@ -39,6 +39,7 @@ const Playlist = () => {
                   gridTemplateColumns: "20px 1fr 1fr",
                   gridGap: "12px",
                   padding: "6px",
+                  fontSize: ["12px", "16px"],
                 }}
                 selected={selectedIndex === i}
                 onClick={(event) => handleListItemClick(event, i)}
