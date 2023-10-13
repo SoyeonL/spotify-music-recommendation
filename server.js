@@ -114,4 +114,4 @@ app.listen(process.env.PORT || 8888, () => {
   console.log(`Listening at http://localhost:${process.env.PORT}`);
 });
 
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "client", "build")));
