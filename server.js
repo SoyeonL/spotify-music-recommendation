@@ -24,6 +24,8 @@ const generateRandomString = (length) => {
   return text;
 };
 
+app.use(express.static(path.join(__dirname, "../client/build")));
+
 const stateKey = "spotify_auth_state";
 
 app.get("/login", (req, res) => {
