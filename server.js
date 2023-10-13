@@ -73,7 +73,9 @@ app.get("/callback", (req, res) => {
           expires_in,
         });
 
-        res.redirect(`http://localhost:3000?${queryParams}`);
+        res.redirect(
+          `https://spotify-music-recommendation.onrender.com/?${queryParams}`
+        );
       } else {
         res.redirect(`/?${querystring.stringify({ error: "invalid token" })}`);
       }
