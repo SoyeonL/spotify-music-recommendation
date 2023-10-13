@@ -2,6 +2,8 @@
 
 The Spotify Music Recommendation App is a web application that allows users to discover new music based on a given track or artist. It leverages React, JavaScript, HTML, and Material-UI (MUI) for the user interface and the Spotify Web API for music data retrieval. With this app, users can explore, listen, and add songs to their Spotify playlists.
 
+![Screenshot](client/public/screenshot.png)
+
 ## Features
 
 - **Spotify Login**: Users can log in to their Spotify accounts to access the full features of the app, including adding songs to their playlists.

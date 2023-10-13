@@ -16,12 +16,13 @@ function App() {
   useEffect(() => {
     setToken(accessToken);
 
-    getCurrentUserPlaylists()
-      .then((response) => {
-        setPlaylists(response.data.items);
-      })
-      .catch((err) => console.error(err));
-  }, []);
+    token &&
+      getCurrentUserPlaylists()
+        .then((response) => {
+          setPlaylists(response.data.items);
+        })
+        .catch((err) => console.error(err));
+  }, [token]);
 
   return (
     <div className="App">

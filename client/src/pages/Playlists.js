@@ -9,14 +9,6 @@ import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 
 const Playlists = ({ playlists }) => {
-  // useEffect(() => {
-  //   getCurrentUserPlaylists()
-  //     .then((response) => {
-  //       setPlaylists(response.data.items);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
   const theme = useTheme();
   const mobile = useMediaQuery(theme.breakpoints.down("sm"));
 
