@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
@@ -7,8 +7,6 @@ import { NestedMenuItem } from "mui-nested-menu";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
-import { addTrackToPlaylist } from "../spotify";
-import { Alert } from "@mui/material";
 
 const AlbumImgItem = ({ track, playlists }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -36,21 +34,11 @@ const AlbumImgItem = ({ track, playlists }) => {
   };
 
   const addToPlaylistHandler = (id) => {
-    // addTrackToPlaylist(id, track.uri)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //   })
-    //   .catch((err) => console.error(err));
-    // console.log(track.uri);
     handleMainMenuClose();
     setOpen(true);
   };
 
   const action = (
-    // <Fragment>
-    // <Button color="secondary" size="small" onClick={handleSubMenuClose}>
-    // UNDO
-    // </Button>
     <IconButton
       size="small"
       aria-label="close"
@@ -59,16 +47,10 @@ const AlbumImgItem = ({ track, playlists }) => {
     >
       <CloseIcon fontSize="small" />
     </IconButton>
-    // </Fragment>
   );
 
   return (
     <>
-      {/* <Link
-        to={`/track-detail/${track.id}`}
-        className="img__link"
-        onClick={handleClick}
-      > */}
       <Button onClick={handleMainMenuClick}>
         <img
           className="img__cover"
@@ -82,7 +64,6 @@ const AlbumImgItem = ({ track, playlists }) => {
         {isPlaying && (
           <audio autoPlay={true} loop src={track.preview_url}></audio>
         )}
-        {/* </Link> */}
       </Button>
       <Menu
         id="demo-positioned-menu"
