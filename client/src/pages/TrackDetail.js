@@ -51,11 +51,12 @@ const TrackDetail = () => {
           </Box>
           <Box
             sx={{
-              gap: "15px",
               textAlign: ["center", ""],
             }}
           >
-            <Box sx={{ fontSize: [30, 70], fontWeight: "bold" }}>
+            <Box
+              sx={{ fontSize: [30, 70], fontWeight: "bold", padding: "10px" }}
+            >
               {trackData.name}
             </Box>
             <Box>
@@ -67,7 +68,7 @@ const TrackDetail = () => {
                 {trackData.artists[0].name}
               </Link>
             </Box>
-            <Box sx={{ margin: "auto" }}>
+            <Box sx={{ margin: "auto", padding: "10px" }}>
               {trackData.preview_url ? (
                 <>
                   <IconButton onClick={playSongHandler}>
