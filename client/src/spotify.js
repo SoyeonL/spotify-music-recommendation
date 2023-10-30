@@ -72,7 +72,7 @@ const refreshToken = async () => {
     window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
 
     // Reload the page for localStorage updates to be reflected
-    window.location.reload();
+    // window.location.reload();
   } catch (e) {
     console.error(e);
   }
