@@ -155,9 +155,9 @@ export const getCurrentUserPlaylists = () => {
   return axios.get(`/me/playlists`);
 };
 
-export const addTrackToPlaylist = (playlist_id, uri) => {
+export const addTrackToPlaylist = (playlist_id, uris) => {
   return axios.post(`/playlists/${playlist_id}/tracks`, {
-    uris: [`${uri}`],
+    uris: uris,
   });
 };
 
@@ -179,4 +179,10 @@ export const getCurrentUserProfile = () => {
 
 export const getPlaylistById = (id) => {
   return axios.get(`/playlists/${id}`);
+};
+
+export const createPlaylist = (user_id) => {
+  return axios.post(`/users/${user_id}/playlists`, {
+    name: "",
+  });
 };

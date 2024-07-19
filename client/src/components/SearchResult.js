@@ -23,8 +23,9 @@ const SearchResult = ({ playlists }) => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleClose = (value) => {
     setOpen(false);
+    setSelectedValue(value);
   };
 
   return (
@@ -39,6 +40,7 @@ const SearchResult = ({ playlists }) => {
             onClose={handleClose}
             open={open}
             playlists={playlists}
+            tracks={tracks}
           />
           <ImageList
             sx={{ height: 1000, pt: 5, mb: 5 }}

@@ -14,6 +14,10 @@ const AlbumImgItem = ({ track, playlists }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [open, setOpen] = useState(false);
 
+  const getTrackUri = () => {
+    return [`${track.uri}`];
+  };
+
   const menuOpen = Boolean(anchorEl);
 
   const handleMainMenuClick = (event) => {
@@ -35,12 +39,12 @@ const AlbumImgItem = ({ track, playlists }) => {
   };
 
   const addToPlaylistHandler = (id) => {
-    addTrackToPlaylist(id, track.uri)
+    const uri = getTrackUri();
+    addTrackToPlaylist(id, uri)
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => console.error(err));
-    console.log(track.uri);
     handleMainMenuClose();
     setOpen(true);
   };
