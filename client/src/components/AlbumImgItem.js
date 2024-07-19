@@ -7,6 +7,7 @@ import { NestedMenuItem } from "mui-nested-menu";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
+import { addTrackToPlaylist } from "../spotify";
 
 const AlbumImgItem = ({ track, playlists }) => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,6 +35,12 @@ const AlbumImgItem = ({ track, playlists }) => {
   };
 
   const addToPlaylistHandler = (id) => {
+    addTrackToPlaylist(id, track.uri)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((err) => console.error(err));
+    console.log(track.uri);
     handleMainMenuClose();
     setOpen(true);
   };
