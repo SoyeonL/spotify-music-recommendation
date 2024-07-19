@@ -16,8 +16,15 @@ const AddSongsDialog = (props) => {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value) => {
+  // Trigger a function that adds all songs to the selected playlist
+  const handleAddsongsToPlaylist = (value) => {
     onClose(value);
+  };
+
+  // 1. Trigger a function that creates a new playlist
+  // 2. then add all songs to the new playlist
+  const handleCreateNewPlaylist = () => {
+    onClose();
   };
 
   return (
@@ -26,22 +33,19 @@ const AddSongsDialog = (props) => {
       <List sx={{ pt: 0 }}>
         {playlists.map((playlist) => (
           <ListItem disableGutters key={playlist}>
-            <ListItemButton onClick={() => handleListItemClick(playlist)}>
+            <ListItemButton onClick={() => handleAddsongsToPlaylist(playlist)}>
               <ListItemText primary={playlist.name} />
             </ListItemButton>
           </ListItem>
         ))}
         <ListItem disableGutters>
-          <ListItemButton
-            autoFocus
-            onClick={() => handleListItemClick("addAccount")}
-          >
+          <ListItemButton autoFocus onClick={() => handleCreateNewPlaylist()}>
             <ListItemAvatar>
               <Avatar>
                 <AddIcon />
               </Avatar>
             </ListItemAvatar>
-            <ListItemText primary="Add account" />
+            <ListItemText primary="New Playlist" />
           </ListItemButton>
         </ListItem>
       </List>
