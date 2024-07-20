@@ -69,8 +69,11 @@ const refreshToken = async () => {
       LOCALSTORAGE_KEYS.accessToken,
       data.access_token
     );
-    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
-
+    // window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+    window.localStorage.setItem(
+      LOCALSTORAGE_VALUES.refreshToken,
+      data.refreshToken
+    );
     // Reload the page for localStorage updates to be reflected
     window.location.reload();
   } catch (e) {
