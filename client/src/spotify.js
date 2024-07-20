@@ -67,7 +67,7 @@ const refreshToken = async () => {
     // Update localStorage values
     window.localStorage.setItem(
       LOCALSTORAGE_KEYS.accessToken,
-      data.access_token
+      data.accessToken
     );
     // window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
     window.localStorage.setItem(
