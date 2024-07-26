@@ -57,6 +57,7 @@ const refreshToken = async () => {
     ) {
       console.error("No refresh token available");
       logout();
+      return;
     }
 
     // Use `/refresh_token` endpoint from our Node app
@@ -67,13 +68,13 @@ const refreshToken = async () => {
     // Update localStorage values
     window.localStorage.setItem(
       LOCALSTORAGE_KEYS.accessToken,
-      data.accessToken
+      data.access_token
     );
-    // window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
-    window.localStorage.setItem(
-      LOCALSTORAGE_VALUES.refreshToken,
-      data.refreshToken
-    );
+    window.localStorage.setItem(LOCALSTORAGE_KEYS.timestamp, Date.now());
+    // window.localStorage.setItem(
+    //   LOCALSTORAGE_VALUES.refreshToken,
+    //   data.refreshToken
+    // );
     // Reload the page for localStorage updates to be reflected
     window.location.reload();
   } catch (e) {
